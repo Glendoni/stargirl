@@ -26,6 +26,10 @@ services:
                 ipv4_address: 172.28.1.2
     webserver:
       image: nginx:alpine
+      depends_on:
+        - postgres
+        - redis
+        - php-fpm
       container_name: ${PROJECT_NAME}-webserver
       working_dir: /application
       volumes:
